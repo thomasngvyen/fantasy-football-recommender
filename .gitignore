@@ -1,5 +1,7 @@
 # Python
 backend/.venv/
+backend/fantasy.db
+backend/.env
 __pycache__/
 *.pyc
 .pytest_cache/
