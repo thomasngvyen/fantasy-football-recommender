@@ -69,18 +69,15 @@ class Matchup(Base):
 
 
 class TeamMatchupStats(Base):
-    """Weekly team ranks consumed by compute_adjusted_projection."""
+    """Season-long team ranks consumed by compute_adjusted_projection."""
 
     __tablename__ = "team_matchup_stats"
     __table_args__ = (
-        UniqueConstraint(
-            "team", "week", "season", name="uq_team_stats_team_week_season"
-        ),
+        UniqueConstraint("team", "season", name="uq_team_stats_team_season"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     team: Mapped[str] = mapped_column(String(10), index=True)
-    week: Mapped[int] = mapped_column(Integer)
     season: Mapped[int] = mapped_column(Integer)
     pass_defense_rank: Mapped[int] = mapped_column(Integer)
     run_defense_rank: Mapped[int] = mapped_column(Integer)

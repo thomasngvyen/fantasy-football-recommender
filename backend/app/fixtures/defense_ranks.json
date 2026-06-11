@@ -1,7 +1,6 @@
 [
   {
     "team": "ARI",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 27,
     "run_defense_rank": 21,
@@ -11,7 +10,6 @@
   },
   {
     "team": "ATL",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 13,
     "run_defense_rank": 27,
@@ -21,7 +19,6 @@
   },
   {
     "team": "BAL",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 22,
     "run_defense_rank": 4,
@@ -31,7 +28,6 @@
   },
   {
     "team": "BUF",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 7,
     "run_defense_rank": 31,
@@ -41,7 +37,6 @@
   },
   {
     "team": "CAR",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 24,
     "run_defense_rank": 23,
@@ -51,7 +46,6 @@
   },
   {
     "team": "CHI",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 17,
     "run_defense_rank": 24,
@@ -61,7 +55,6 @@
   },
   {
     "team": "CIN",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 28,
     "run_defense_rank": 29,
@@ -71,7 +64,6 @@
   },
   {
     "team": "CLE",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 4,
     "run_defense_rank": 8,
@@ -81,7 +73,6 @@
   },
   {
     "team": "DAL",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 31,
     "run_defense_rank": 30,
@@ -91,7 +82,6 @@
   },
   {
     "team": "DEN",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 6,
     "run_defense_rank": 14,
@@ -101,7 +91,6 @@
   },
   {
     "team": "DET",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 14,
     "run_defense_rank": 17,
@@ -111,7 +100,6 @@
   },
   {
     "team": "GB",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 21,
     "run_defense_rank": 19,
@@ -121,7 +109,6 @@
   },
   {
     "team": "HOU",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 1,
     "run_defense_rank": 11,
@@ -131,7 +118,6 @@
   },
   {
     "team": "IND",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 19,
     "run_defense_rank": 9,
@@ -141,7 +127,6 @@
   },
   {
     "team": "JAX",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 3,
     "run_defense_rank": 12,
@@ -151,7 +136,6 @@
   },
   {
     "team": "KC",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 15,
     "run_defense_rank": 10,
@@ -161,7 +145,6 @@
   },
   {
     "team": "LAC",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 9,
     "run_defense_rank": 3,
@@ -171,7 +154,6 @@
   },
   {
     "team": "LAR",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 10,
     "run_defense_rank": 13,
@@ -181,7 +163,6 @@
   },
   {
     "team": "LV",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 23,
     "run_defense_rank": 6,
@@ -191,7 +172,6 @@
   },
   {
     "team": "MIA",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 26,
     "run_defense_rank": 26,
@@ -201,7 +181,6 @@
   },
   {
     "team": "MIN",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 2,
     "run_defense_rank": 7,
@@ -211,7 +190,6 @@
   },
   {
     "team": "NE",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 11,
     "run_defense_rank": 16,
@@ -221,7 +199,6 @@
   },
   {
     "team": "NO",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 12,
     "run_defense_rank": 2,
@@ -231,7 +208,6 @@
   },
   {
     "team": "NYG",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 16,
     "run_defense_rank": 32,
@@ -241,7 +217,6 @@
   },
   {
     "team": "NYJ",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 32,
     "run_defense_rank": 25,
@@ -251,7 +226,6 @@
   },
   {
     "team": "PHI",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 5,
     "run_defense_rank": 15,
@@ -261,7 +235,6 @@
   },
   {
     "team": "PIT",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 18,
     "run_defense_rank": 22,
@@ -271,7 +244,6 @@
   },
   {
     "team": "SEA",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 8,
     "run_defense_rank": 1,
@@ -281,7 +253,6 @@
   },
   {
     "team": "SF",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 25,
     "run_defense_rank": 20,
@@ -291,7 +262,6 @@
   },
   {
     "team": "TB",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 20,
     "run_defense_rank": 5,
@@ -301,7 +271,6 @@
   },
   {
     "team": "TEN",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 29,
     "run_defense_rank": 18,
@@ -311,7 +280,6 @@
   },
   {
     "team": "WAS",
-    "week": 1,
     "season": 2026,
     "pass_defense_rank": 30,
     "run_defense_rank": 28,
