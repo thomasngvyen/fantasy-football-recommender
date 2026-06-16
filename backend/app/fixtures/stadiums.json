@@ -1,34 +1,226 @@
 [
-    { "team": "ARI", "stadium_name": "State Farm Stadium", "is_dome": true },
-    { "team": "ATL", "stadium_name": "Mercedes-Benz Stadium", "is_dome": true },
-    { "team": "BAL", "stadium_name": "M&T Bank Stadium", "is_dome": false },
-    { "team": "BUF", "stadium_name": "Highmark Stadium", "is_dome": false },
-    { "team": "CAR", "stadium_name": "Bank of America Stadium", "is_dome": false },
-    { "team": "CHI", "stadium_name": "Soldier Field", "is_dome": false },
-    { "team": "CIN", "stadium_name": "Paycor Stadium", "is_dome": false },
-    { "team": "CLE", "stadium_name": "Huntington Bank Field", "is_dome": false },
-    { "team": "DAL", "stadium_name": "AT&T Stadium", "is_dome": true },
-    { "team": "DEN", "stadium_name": "Empower Field at Mile High", "is_dome": false },
-    { "team": "DET", "stadium_name": "Ford Field", "is_dome": true },
-    { "team": "GB",  "stadium_name": "Lambeau Field", "is_dome": false },
-    { "team": "HOU", "stadium_name": "NRG Stadium", "is_dome": true },
-    { "team": "IND", "stadium_name": "Lucas Oil Stadium", "is_dome": true },
-    { "team": "JAX", "stadium_name": "EverBank Stadium", "is_dome": false },
-    { "team": "KC",  "stadium_name": "GEHA Field at Arrowhead Stadium", "is_dome": false },
-    { "team": "LV",  "stadium_name": "Allegiant Stadium", "is_dome": true },
-    { "team": "LAC", "stadium_name": "SoFi Stadium", "is_dome": true },
-    { "team": "LAR", "stadium_name": "SoFi Stadium", "is_dome": true },
-    { "team": "MIA", "stadium_name": "Hard Rock Stadium", "is_dome": false },
-    { "team": "MIN", "stadium_name": "U.S. Bank Stadium", "is_dome": true },
-    { "team": "NE",  "stadium_name": "Gillette Stadium", "is_dome": false },
-    { "team": "NO",  "stadium_name": "Caesars Superdome", "is_dome": true },
-    { "team": "NYG", "stadium_name": "MetLife Stadium", "is_dome": false },
-    { "team": "NYJ", "stadium_name": "MetLife Stadium", "is_dome": false },
-    { "team": "PHI", "stadium_name": "Lincoln Financial Field", "is_dome": false },
-    { "team": "PIT", "stadium_name": "Acrisure Stadium", "is_dome": false },
-    { "team": "SF",  "stadium_name": "Levi's Stadium", "is_dome": false },
-    { "team": "SEA", "stadium_name": "Lumen Field", "is_dome": false },
-    { "team": "TB",  "stadium_name": "Raymond James Stadium", "is_dome": false },
-    { "team": "TEN", "stadium_name": "Nissan Stadium", "is_dome": false },
-    { "team": "WAS", "stadium_name": "Northwest Stadium", "is_dome": false }
-  ]
+  {
+    "team": "ARI",
+    "stadium_name": "State Farm Stadium",
+    "is_dome": true,
+    "latitude": 33.5276,
+    "longitude": -112.2626
+  },
+  {
+    "team": "ATL",
+    "stadium_name": "Mercedes-Benz Stadium",
+    "is_dome": true,
+    "latitude": 33.7554,
+    "longitude": -84.4017
+  },
+  {
+    "team": "BAL",
+    "stadium_name": "M&T Bank Stadium",
+    "is_dome": false,
+    "latitude": 39.2781,
+    "longitude": -76.6228
+  },
+  {
+    "team": "BUF",
+    "stadium_name": "Highmark Stadium",
+    "is_dome": false,
+    "latitude": 42.7738,
+    "longitude": -78.787
+  },
+  {
+    "team": "CAR",
+    "stadium_name": "Bank of America Stadium",
+    "is_dome": false,
+    "latitude": 35.2258,
+    "longitude": -80.8528
+  },
+  {
+    "team": "CHI",
+    "stadium_name": "Soldier Field",
+    "is_dome": false,
+    "latitude": 41.8623,
+    "longitude": -87.6167
+  },
+  {
+    "team": "CIN",
+    "stadium_name": "Paycor Stadium",
+    "is_dome": false,
+    "latitude": 39.0955,
+    "longitude": -84.5161
+  },
+  {
+    "team": "CLE",
+    "stadium_name": "Huntington Bank Field",
+    "is_dome": false,
+    "latitude": 41.5061,
+    "longitude": -81.6995
+  },
+  {
+    "team": "DAL",
+    "stadium_name": "AT&T Stadium",
+    "is_dome": true,
+    "latitude": 32.7473,
+    "longitude": -96.0956
+  },
+  {
+    "team": "DEN",
+    "stadium_name": "Empower Field at Mile High",
+    "is_dome": false,
+    "latitude": 39.7439,
+    "longitude": -105.0201
+  },
+  {
+    "team": "DET",
+    "stadium_name": "Ford Field",
+    "is_dome": true,
+    "latitude": 42.34,
+    "longitude": -83.0456
+  },
+  {
+    "team": "GB",
+    "stadium_name": "Lambeau Field",
+    "is_dome": false,
+    "latitude": 44.5013,
+    "longitude": -88.0622
+  },
+  {
+    "team": "HOU",
+    "stadium_name": "NRG Stadium",
+    "is_dome": true,
+    "latitude": 29.6847,
+    "longitude": -95.4108
+  },
+  {
+    "team": "IND",
+    "stadium_name": "Lucas Oil Stadium",
+    "is_dome": true,
+    "latitude": 39.7601,
+    "longitude": -86.1639
+  },
+  {
+    "team": "JAX",
+    "stadium_name": "EverBank Stadium",
+    "is_dome": false,
+    "latitude": 30.3239,
+    "longitude": -81.6373
+  },
+  {
+    "team": "KC",
+    "stadium_name": "GEHA Field at Arrowhead Stadium",
+    "is_dome": false,
+    "latitude": 39.0489,
+    "longitude": -94.4839
+  },
+  {
+    "team": "LV",
+    "stadium_name": "Allegiant Stadium",
+    "is_dome": true,
+    "latitude": 36.0908,
+    "longitude": -115.1833
+  },
+  {
+    "team": "LAC",
+    "stadium_name": "SoFi Stadium",
+    "is_dome": true,
+    "latitude": 33.9535,
+    "longitude": -118.339
+  },
+  {
+    "team": "LAR",
+    "stadium_name": "SoFi Stadium",
+    "is_dome": true,
+    "latitude": 33.9535,
+    "longitude": -118.339
+  },
+  {
+    "team": "MIA",
+    "stadium_name": "Hard Rock Stadium",
+    "is_dome": false,
+    "latitude": 25.9581,
+    "longitude": -80.2389
+  },
+  {
+    "team": "MIN",
+    "stadium_name": "U.S. Bank Stadium",
+    "is_dome": true,
+    "latitude": 44.9735,
+    "longitude": -93.2575
+  },
+  {
+    "team": "NE",
+    "stadium_name": "Gillette Stadium",
+    "is_dome": false,
+    "latitude": 42.0909,
+    "longitude": -71.2644
+  },
+  {
+    "team": "NO",
+    "stadium_name": "Caesars Superdome",
+    "is_dome": true,
+    "latitude": 29.9511,
+    "longitude": -90.0812
+  },
+  {
+    "team": "NYG",
+    "stadium_name": "MetLife Stadium",
+    "is_dome": false,
+    "latitude": 40.8128,
+    "longitude": -74.0742
+  },
+  {
+    "team": "NYJ",
+    "stadium_name": "MetLife Stadium",
+    "is_dome": false,
+    "latitude": 40.8128,
+    "longitude": -74.0742
+  },
+  {
+    "team": "PHI",
+    "stadium_name": "Lincoln Financial Field",
+    "is_dome": false,
+    "latitude": 39.9009,
+    "longitude": -75.1675
+  },
+  {
+    "team": "PIT",
+    "stadium_name": "Acrisure Stadium",
+    "is_dome": false,
+    "latitude": 40.4468,
+    "longitude": -80.0158
+  },
+  {
+    "team": "SF",
+    "stadium_name": "Levi's Stadium",
+    "is_dome": false,
+    "latitude": 37.4033,
+    "longitude": -121.9699
+  },
+  {
+    "team": "SEA",
+    "stadium_name": "Lumen Field",
+    "is_dome": false,
+    "latitude": 47.5952,
+    "longitude": -122.3316
+  },
+  {
+    "team": "TB",
+    "stadium_name": "Raymond James Stadium",
+    "is_dome": false,
+    "latitude": 27.9759,
+    "longitude": -82.5033
+  },
+  {
+    "team": "TEN",
+    "stadium_name": "Nissan Stadium",
+    "is_dome": false,
+    "latitude": 36.1665,
+    "longitude": -86.7713
+  },
+  {
+    "team": "WAS",
+    "stadium_name": "Northwest Stadium",
+    "is_dome": false,
+    "latitude": 38.9076,
+    "longitude": -76.8645
+  }
+]
