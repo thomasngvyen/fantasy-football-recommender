@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.db.session import SessionLocal, init_db
 from app.db.tables import Player, TeamMatchupStats
+from app.services.base_projections import fetch_season_averages, resolve_base_projection
 from app.services.sleeper_client import SleeperClient
 
 FIXTURES_DIR = Path(__file__).resolve().parent.parent / "fixtures"
@@ -47,6 +48,8 @@ def seed_players(
     *,
     player_ids: list[str] | None = None,
     refresh: bool = False,
+    stats_season: int | None = 2025,
+    scoring: str = "half_ppr",
 ) -> int:
     if player_ids:
         records = [
@@ -57,8 +60,24 @@ def seed_players(
     else:
         records = client.get_player_records(refresh=refresh)
 
+    season_averages = (
+        fetch_season_averages(stats_season, scoring=scoring)
+        if stats_season is not None
+        else None
+    )
+
+    players_by_id = client.get_all_players(refresh=refresh)
+
     count = 0
     for row in records:
+        sleeper_player = players_by_id.get(row["sleeper_id"])
+        row["base_projection"] = resolve_base_projection(
+            sleeper_id=row["sleeper_id"],
+            position=row["position"],
+            season_averages=season_averages,
+            sleeper_player=sleeper_player,
+        )
+
         existing = session.execute(
             select(Player).where(Player.sleeper_id == row["sleeper_id"])
         ).scalar_one_or_none()
@@ -69,8 +88,7 @@ def seed_players(
             existing.name = row["name"]
             existing.position = row["position"]
             existing.team = row["team"]
-            if row["base_projection"]:
-                existing.base_projection = row["base_projection"]
+            existing.base_projection = row["base_projection"]
 
         count += 1
 
@@ -83,6 +101,8 @@ def run_seed(
     players: bool = True,
     player_ids: list[str] | None = None,
     refresh_players: bool = False,
+    stats_season: int | None = 2025,
+    scoring: str = "half_ppr",
 ) -> None:
     init_db()
     client = SleeperClient()
@@ -93,11 +113,15 @@ def run_seed(
             print(f"Seeded {stats_count} team matchup stat rows")
 
         if players:
+            if stats_season is not None:
+                print(f"Loading {stats_season} per-game averages ({scoring})...")
             players_count = seed_players(
                 session,
                 client,
                 player_ids=player_ids,
                 refresh=refresh_players,
+                stats_season=stats_season,
+                scoring=scoring,
             )
             print(f"Seeded {players_count} players")
 
@@ -127,6 +151,23 @@ def main() -> None:
         action="store_true",
         help="Bypass Sleeper player cache and fetch fresh data",
     )
+    parser.add_argument(
+        "--stats-season",
+        type=int,
+        default=2025,
+        help="Season for per-player base_projection averages (default: 2025)",
+    )
+    parser.add_argument(
+        "--no-season-averages",
+        action="store_true",
+        help="Use position defaults instead of last-season averages",
+    )
+    parser.add_argument(
+        "--scoring",
+        choices=["half_ppr", "ppr", "std"],
+        default="half_ppr",
+        help="Fantasy scoring format for season averages",
+    )
     args = parser.parse_args()
 
     seed_stats = not args.players_only
@@ -140,6 +181,8 @@ def main() -> None:
         players=seed_player_rows,
         player_ids=args.player_ids,
         refresh_players=args.refresh_players,
+        stats_season=None if args.no_season_averages else args.stats_season,
+        scoring=args.scoring,
     )
 
 
