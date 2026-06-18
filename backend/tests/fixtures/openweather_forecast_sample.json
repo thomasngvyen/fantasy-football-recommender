@@ -1,0 +1,26 @@
+{
+  "list": [
+    {
+      "dt": 1757541600,
+      "main": {"temp": 72.5},
+      "wind": {"speed": 8.5},
+      "weather": [{"main": "Clouds"}],
+      "pop": 0.1
+    },
+    {
+      "dt": 1757552400,
+      "main": {"temp": 68.0},
+      "wind": {"speed": 18.2},
+      "weather": [{"main": "Rain"}],
+      "rain": {"3h": 2.5},
+      "pop": 0.85
+    },
+    {
+      "dt": 1757563200,
+      "main": {"temp": 65.0},
+      "wind": {"speed": 12.0},
+      "weather": [{"main": "Clear"}],
+      "pop": 0.0
+    }
+  ]
+}

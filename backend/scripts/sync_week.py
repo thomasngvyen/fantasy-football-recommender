@@ -17,11 +17,14 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
+import app.config  # noqa: F401, E402  # loads backend/.env before other app imports
+
 from app.db.seed import seed_players, seed_team_matchup_stats  # noqa: E402
 from app.db.session import SessionLocal, init_db  # noqa: E402
 from app.services.matchup_builder import build_matchups, schedule_path_for_week  # noqa: E402
 from app.services.recommendation import compute_projections_for_week  # noqa: E402
 from app.services.sleeper_client import SleeperClient  # noqa: E402
+from app.services.weather_client import WeatherClient, sync_weather_for_week  # noqa: E402
 
 
 def resolve_week_season(
@@ -65,6 +68,7 @@ def run_sync(
     stats: bool = True,
     players: bool = True,
     matchups: bool = True,
+    weather: bool = True,
     projections: bool = True,
     refresh_players: bool = True,
     stats_season: int | None = None,
@@ -119,6 +123,26 @@ def run_sync(
                 f"{result['matchups_updated']} updated"
             )
 
+        if weather:
+            weather_client = WeatherClient.from_env()
+            if weather_client is None:
+                print(
+                    "Weather: skipped (set OPENWEATHER_API_KEY in backend/.env)"
+                )
+            else:
+                weather_result = sync_weather_for_week(
+                    session, target_week, target_season, weather_client
+                )
+                print(
+                    f"Weather: {weather_result['games_fetched']} games fetched, "
+                    f"{weather_result['rows_created']} created, "
+                    f"{weather_result['rows_updated']} updated, "
+                    f"{weather_result['forecast_unavailable']} outside forecast window, "
+                    f"{weather_result['skipped_dome']} dome skipped"
+                )
+                for error in weather_result["errors"]:
+                    print(f"  Weather error: {error}")
+
         if projections:
             projection_result = compute_projections_for_week(
                 session, target_week, target_season
@@ -162,6 +186,16 @@ def main() -> None:
         help="Only upsert matchups (requires schedule fixture for target week)",
     )
     parser.add_argument(
+        "--weather-only",
+        action="store_true",
+        help="Only fetch/cache weather for outdoor matchups",
+    )
+    parser.add_argument(
+        "--no-weather",
+        action="store_true",
+        help="Skip weather fetch during full sync",
+    )
+    parser.add_argument(
         "--projections-only",
         action="store_true",
         help="Only compute/store adjusted projections",
@@ -195,12 +229,18 @@ def main() -> None:
     args = parser.parse_args()
 
     exclusive = sum(
-        [args.stats_only, args.players_only, args.matchups_only, args.projections_only]
+        [
+            args.stats_only,
+            args.players_only,
+            args.matchups_only,
+            args.weather_only,
+            args.projections_only,
+        ]
     )
     if exclusive > 1:
         parser.error(
             "Use at most one of --stats-only, --players-only, "
-            "--matchups-only, --projections-only"
+            "--matchups-only, --weather-only, --projections-only"
         )
 
     run_sync(
@@ -208,17 +248,26 @@ def main() -> None:
         season=args.season,
         stats=not args.players_only
         and not args.matchups_only
+        and not args.weather_only
         and not args.projections_only,
         players=not args.stats_only
         and not args.matchups_only
+        and not args.weather_only
         and not args.projections_only,
         matchups=not args.stats_only
         and not args.players_only
+        and not args.weather_only
+        and not args.projections_only,
+        weather=not args.no_weather
+        and not args.stats_only
+        and not args.players_only
+        and not args.matchups_only
         and not args.projections_only,
         projections=not args.no_projections
         and not args.stats_only
         and not args.players_only
-        and not args.matchups_only,
+        and not args.matchups_only
+        and not args.weather_only,
         refresh_players=not args.no_refresh_players,
         stats_season=args.stats_season,
         scoring=args.scoring,
