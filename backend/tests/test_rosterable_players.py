@@ -162,3 +162,17 @@ def test_includes_te2():
 def test_kicker_only_requires_team_and_status():
     player = {"team": "KC", "status": "Active"}
     assert is_rosterable_fantasy_player(player, "K") is True
+
+
+def test_includes_dst_with_null_status():
+    dst = {
+        "player_id": "KC",
+        "first_name": "Kansas City",
+        "last_name": "Chiefs",
+        "team": "KC",
+        "status": None,
+        "active": True,
+        "position": "DEF",
+        "fantasy_positions": ["DEF"],
+    }
+    assert is_rosterable_fantasy_player(dst, "DST") is True

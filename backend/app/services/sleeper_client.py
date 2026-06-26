@@ -24,6 +24,24 @@ MAX_DEPTH_ORDER_BY_POSITION = {
 WR_DEPTH_CHART_POSITIONS = frozenset({"LWR", "RWR", "SWR"})
 
 
+def is_defense_unit(sleeper_player: dict) -> bool:
+    fantasy_positions = sleeper_player.get("fantasy_positions") or []
+    position = (
+        fantasy_positions[0]
+        if fantasy_positions
+        else sleeper_player.get("position")
+    )
+    return position == "DEF" or POSITION_MAP.get(position, position) == "DST"
+
+
+def has_rosterable_status(sleeper_player: dict) -> bool:
+    status = sleeper_player.get("status")
+    if status in ROSTERABLE_STATUSES:
+        return True
+    # Sleeper DEF team units omit status; team + active flag is sufficient.
+    return status is None and is_defense_unit(sleeper_player)
+
+
 @dataclass(frozen=True)
 class NFLState:
     week: int
@@ -95,7 +113,7 @@ class SleeperClient:
         )
         if position not in FANTASY_POSITIONS:
             return None
-        if sleeper_player.get("status") not in ROSTERABLE_STATUSES:
+        if not has_rosterable_status(sleeper_player):
             return None
 
         first_name = sleeper_player.get("first_name", "")
@@ -199,6 +217,6 @@ def is_active_sleeper_player(sleeper_player: dict) -> bool:
         return False
     if sleeper_player.get("active") is False:
         return False
-    if sleeper_player.get("status") not in ROSTERABLE_STATUSES:
+    if not has_rosterable_status(sleeper_player):
         return False
     return True

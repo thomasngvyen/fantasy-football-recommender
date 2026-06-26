@@ -36,3 +36,31 @@ def test_get_active_players_excludes_retired(monkeypatch):
 
     assert len(active) == 1
     assert active[0]["name"] == "Patrick Mahomes"
+
+
+def test_get_active_players_includes_dst(monkeypatch):
+    roster = {
+        "KC": {
+            "player_id": "KC",
+            "first_name": "Kansas City",
+            "last_name": "Chiefs",
+            "team": "KC",
+            "status": None,
+            "active": True,
+            "position": "DEF",
+            "fantasy_positions": ["DEF"],
+        },
+    }
+
+    monkeypatch.setattr(
+        SleeperClient,
+        "get_all_players",
+        lambda self, *, refresh=False: roster,
+    )
+
+    client = SleeperClient()
+    dst = client.get_active_players(position="DST")
+
+    assert len(dst) == 1
+    assert dst[0]["position"] == "DST"
+    assert dst[0]["name"] == "Kansas City Chiefs"
