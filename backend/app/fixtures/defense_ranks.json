@@ -1,0 +1,290 @@
+[
+  {
+    "team": "ARI",
+    "season": 2026,
+    "pass_defense_rank": 27,
+    "run_defense_rank": 21,
+    "total_offense_rank": 21,
+    "points_allowed_pass_avg": 11.62,
+    "points_allowed_run_avg": 7.12
+  },
+  {
+    "team": "ATL",
+    "season": 2026,
+    "pass_defense_rank": 13,
+    "run_defense_rank": 27,
+    "total_offense_rank": 24,
+    "points_allowed_pass_avg": 10.12,
+    "points_allowed_run_avg": 4.5
+  },
+  {
+    "team": "BAL",
+    "season": 2026,
+    "pass_defense_rank": 22,
+    "run_defense_rank": 4,
+    "total_offense_rank": 13,
+    "points_allowed_pass_avg": 8.62,
+    "points_allowed_run_avg": 6.75
+  },
+  {
+    "team": "BUF",
+    "season": 2026,
+    "pass_defense_rank": 7,
+    "run_defense_rank": 31,
+    "total_offense_rank": 3,
+    "points_allowed_pass_avg": 7.12,
+    "points_allowed_run_avg": 9.0
+  },
+  {
+    "team": "CAR",
+    "season": 2026,
+    "pass_defense_rank": 24,
+    "run_defense_rank": 23,
+    "total_offense_rank": 26,
+    "points_allowed_pass_avg": 7.5,
+    "points_allowed_run_avg": 7.5
+  },
+  {
+    "team": "CHI",
+    "season": 2026,
+    "pass_defense_rank": 17,
+    "run_defense_rank": 24,
+    "total_offense_rank": 7,
+    "points_allowed_pass_avg": 12.0,
+    "points_allowed_run_avg": 5.62
+  },
+  {
+    "team": "CIN",
+    "season": 2026,
+    "pass_defense_rank": 28,
+    "run_defense_rank": 29,
+    "total_offense_rank": 19,
+    "points_allowed_pass_avg": 12.38,
+    "points_allowed_run_avg": 6.75
+  },
+  {
+    "team": "CLE",
+    "season": 2026,
+    "pass_defense_rank": 4,
+    "run_defense_rank": 8,
+    "total_offense_rank": 31,
+    "points_allowed_pass_avg": 9.38,
+    "points_allowed_run_avg": 5.25
+  },
+  {
+    "team": "DAL",
+    "season": 2026,
+    "pass_defense_rank": 31,
+    "run_defense_rank": 30,
+    "total_offense_rank": 5,
+    "points_allowed_pass_avg": 13.12,
+    "points_allowed_run_avg": 9.0
+  },
+  {
+    "team": "DEN",
+    "season": 2026,
+    "pass_defense_rank": 6,
+    "run_defense_rank": 14,
+    "total_offense_rank": 10,
+    "points_allowed_pass_avg": 6.75,
+    "points_allowed_run_avg": 4.12
+  },
+  {
+    "team": "DET",
+    "season": 2026,
+    "pass_defense_rank": 14,
+    "run_defense_rank": 17,
+    "total_offense_rank": 6,
+    "points_allowed_pass_avg": 11.62,
+    "points_allowed_run_avg": 6.0
+  },
+  {
+    "team": "GB",
+    "season": 2026,
+    "pass_defense_rank": 21,
+    "run_defense_rank": 19,
+    "total_offense_rank": 4,
+    "points_allowed_pass_avg": 9.0,
+    "points_allowed_run_avg": 5.62
+  },
+  {
+    "team": "HOU",
+    "season": 2026,
+    "pass_defense_rank": 1,
+    "run_defense_rank": 11,
+    "total_offense_rank": 23,
+    "points_allowed_pass_avg": 7.5,
+    "points_allowed_run_avg": 4.88
+  },
+  {
+    "team": "IND",
+    "season": 2026,
+    "pass_defense_rank": 19,
+    "run_defense_rank": 9,
+    "total_offense_rank": 9,
+    "points_allowed_pass_avg": 9.0,
+    "points_allowed_run_avg": 6.0
+  },
+  {
+    "team": "JAX",
+    "season": 2026,
+    "pass_defense_rank": 3,
+    "run_defense_rank": 12,
+    "total_offense_rank": 12,
+    "points_allowed_pass_avg": 9.38,
+    "points_allowed_run_avg": 4.88
+  },
+  {
+    "team": "KC",
+    "season": 2026,
+    "pass_defense_rank": 15,
+    "run_defense_rank": 10,
+    "total_offense_rank": 11,
+    "points_allowed_pass_avg": 6.75,
+    "points_allowed_run_avg": 5.25
+  },
+  {
+    "team": "LAC",
+    "season": 2026,
+    "pass_defense_rank": 9,
+    "run_defense_rank": 3,
+    "total_offense_rank": 25,
+    "points_allowed_pass_avg": 6.0,
+    "points_allowed_run_avg": 6.0
+  },
+  {
+    "team": "LAR",
+    "season": 2026,
+    "pass_defense_rank": 10,
+    "run_defense_rank": 13,
+    "total_offense_rank": 2,
+    "points_allowed_pass_avg": 9.75,
+    "points_allowed_run_avg": 3.0
+  },
+  {
+    "team": "LV",
+    "season": 2026,
+    "pass_defense_rank": 23,
+    "run_defense_rank": 6,
+    "total_offense_rank": 32,
+    "points_allowed_pass_avg": 8.62,
+    "points_allowed_run_avg": 8.25
+  },
+  {
+    "team": "MIA",
+    "season": 2026,
+    "pass_defense_rank": 26,
+    "run_defense_rank": 26,
+    "total_offense_rank": 22,
+    "points_allowed_pass_avg": 10.88,
+    "points_allowed_run_avg": 6.75
+  },
+  {
+    "team": "MIN",
+    "season": 2026,
+    "pass_defense_rank": 2,
+    "run_defense_rank": 7,
+    "total_offense_rank": 28,
+    "points_allowed_pass_avg": 5.62,
+    "points_allowed_run_avg": 4.88
+  },
+  {
+    "team": "NE",
+    "season": 2026,
+    "pass_defense_rank": 11,
+    "run_defense_rank": 16,
+    "total_offense_rank": 1,
+    "points_allowed_pass_avg": 9.38,
+    "points_allowed_run_avg": 4.12
+  },
+  {
+    "team": "NO",
+    "season": 2026,
+    "pass_defense_rank": 12,
+    "run_defense_rank": 2,
+    "total_offense_rank": 27,
+    "points_allowed_pass_avg": 9.38,
+    "points_allowed_run_avg": 4.5
+  },
+  {
+    "team": "NYG",
+    "season": 2026,
+    "pass_defense_rank": 16,
+    "run_defense_rank": 32,
+    "total_offense_rank": 17,
+    "points_allowed_pass_avg": 9.38,
+    "points_allowed_run_avg": 7.88
+  },
+  {
+    "team": "NYJ",
+    "season": 2026,
+    "pass_defense_rank": 32,
+    "run_defense_rank": 25,
+    "total_offense_rank": 29,
+    "points_allowed_pass_avg": 13.5,
+    "points_allowed_run_avg": 7.5
+  },
+  {
+    "team": "PHI",
+    "season": 2026,
+    "pass_defense_rank": 5,
+    "run_defense_rank": 15,
+    "total_offense_rank": 16,
+    "points_allowed_pass_avg": 5.25,
+    "points_allowed_run_avg": 7.5
+  },
+  {
+    "team": "PIT",
+    "season": 2026,
+    "pass_defense_rank": 18,
+    "run_defense_rank": 22,
+    "total_offense_rank": 14,
+    "points_allowed_pass_avg": 11.25,
+    "points_allowed_run_avg": 3.75
+  },
+  {
+    "team": "SEA",
+    "season": 2026,
+    "pass_defense_rank": 8,
+    "run_defense_rank": 1,
+    "total_offense_rank": 15,
+    "points_allowed_pass_avg": 7.5,
+    "points_allowed_run_avg": 3.38
+  },
+  {
+    "team": "SF",
+    "season": 2026,
+    "pass_defense_rank": 25,
+    "run_defense_rank": 20,
+    "total_offense_rank": 8,
+    "points_allowed_pass_avg": 10.88,
+    "points_allowed_run_avg": 4.88
+  },
+  {
+    "team": "TB",
+    "season": 2026,
+    "pass_defense_rank": 20,
+    "run_defense_rank": 5,
+    "total_offense_rank": 20,
+    "points_allowed_pass_avg": 11.25,
+    "points_allowed_run_avg": 6.0
+  },
+  {
+    "team": "TEN",
+    "season": 2026,
+    "pass_defense_rank": 29,
+    "run_defense_rank": 18,
+    "total_offense_rank": 30,
+    "points_allowed_pass_avg": 11.25,
+    "points_allowed_run_avg": 7.88
+  },
+  {
+    "team": "WAS",
+    "season": 2026,
+    "pass_defense_rank": 30,
+    "run_defense_rank": 28,
+    "total_offense_rank": 18,
+    "points_allowed_pass_avg": 12.38,
+    "points_allowed_run_avg": 6.75
+  }
+]
