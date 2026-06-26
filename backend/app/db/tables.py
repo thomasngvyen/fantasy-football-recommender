@@ -32,8 +32,14 @@ class Player(Base):
     team: Mapped[Optional[str]] = mapped_column(String(10))
     base_projection: Mapped[float] = mapped_column(Float, insert_default=0.0)
 
-    matchups: Mapped[List["Matchup"]] = relationship(back_populates="player")
-    projections: Mapped[List["Projection"]] = relationship(back_populates="player")
+    matchups: Mapped[List["Matchup"]] = relationship(
+        back_populates="player",
+        cascade="all, delete-orphan",
+    )
+    projections: Mapped[List["Projection"]] = relationship(
+        back_populates="player",
+        cascade="all, delete-orphan",
+    )
 
 
 class Matchup(Base):

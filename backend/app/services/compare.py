@@ -12,6 +12,7 @@ from app.models import (
     PlayerOut,
     ProjectionBreakdown,
 )
+from app.services.sleeper_client import SleeperClient
 
 
 def get_player_by_sleeper_id(db: Session, sleeper_id: str) -> Player:
@@ -167,18 +168,21 @@ def compare_players(db: Session, request: CompareRequest) -> CompareResponse:
     )
 
 
-def list_players(db: Session, *, position: str | None = None) -> list[PlayerOut]:
-    query = select(Player).order_by(Player.name)
-    if position is not None:
-        query = query.where(Player.position == position.upper())
-
-    players = db.scalars(query).all()
+def list_players(
+    db: Session,
+    *,
+    position: str | None = None,
+    sleeper: SleeperClient | None = None,
+) -> list[PlayerOut]:
+    """Return currently rostered players from Sleeper (not the local DB cache)."""
+    del db
+    client = sleeper or SleeperClient()
     return [
         PlayerOut(
-            sleeper_id=player.sleeper_id,
-            name=player.name,
-            position=player.position,
-            team=player.team,
+            sleeper_id=record["sleeper_id"],
+            name=record["name"],
+            position=record["position"],
+            team=record["team"],
         )
-        for player in players
+        for record in client.get_active_players(position=position, refresh=False)
     ]

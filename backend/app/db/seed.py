@@ -50,6 +50,7 @@ def seed_players(
     refresh: bool = False,
     stats_season: int | None = 2025,
     scoring: str = "half_ppr",
+    prune_inactive: bool = True,
 ) -> int:
     if player_ids:
         records = [
@@ -59,6 +60,10 @@ def seed_players(
         ]
     else:
         records = client.get_player_records(refresh=refresh)
+
+    active_sleeper_ids = {row["sleeper_id"] for row in records}
+    if prune_inactive and not player_ids:
+        prune_players_not_on_roster(session, active_sleeper_ids)
 
     season_averages = (
         fetch_season_averages(stats_season, scoring=scoring)
@@ -93,6 +98,16 @@ def seed_players(
         count += 1
 
     return count
+
+
+def prune_players_not_on_roster(session: Session, active_sleeper_ids: set[str]) -> int:
+    """Remove DB players who are no longer on an NFL roster per Sleeper."""
+    removed = 0
+    for player in session.scalars(select(Player)).all():
+        if player.sleeper_id not in active_sleeper_ids:
+            session.delete(player)
+            removed += 1
+    return removed
 
 
 def run_seed(

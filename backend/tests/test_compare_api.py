@@ -12,7 +12,100 @@ from sqlalchemy.pool import StaticPool
 from app.db.session import get_db
 from app.db.tables import Base, Matchup, Player, Projection
 from app.main import app
+from app.services.sleeper_client import SleeperClient
 from test_compare import _seed_compare_fixtures
+
+
+def _mock_sleeper_roster(monkeypatch: pytest.MonkeyPatch) -> None:
+    roster = {
+        "qb-a": {
+            "team": "KC",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 1,
+            "depth_chart_position": "QB",
+            "fantasy_positions": ["QB"],
+            "player_id": "qb-a",
+            "first_name": "Alpha",
+            "last_name": "QB",
+        },
+        "qb-b": {
+            "team": "BUF",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 2,
+            "depth_chart_position": "QB",
+            "fantasy_positions": ["QB"],
+            "player_id": "qb-b",
+            "first_name": "Beta",
+            "last_name": "QB",
+        },
+        "qb-1": {
+            "team": "KC",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 1,
+            "depth_chart_position": "QB",
+            "fantasy_positions": ["QB"],
+            "player_id": "qb-1",
+            "first_name": "Some",
+            "last_name": "QB",
+        },
+        "rb-1": {
+            "team": "KC",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 1,
+            "depth_chart_position": "RB",
+            "fantasy_positions": ["RB"],
+            "player_id": "rb-1",
+            "first_name": "Some",
+            "last_name": "RB",
+        },
+        "no-proj": {
+            "team": "KC",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 1,
+            "depth_chart_position": "QB",
+            "fantasy_positions": ["QB"],
+            "player_id": "no-proj",
+            "first_name": "No",
+            "last_name": "Proj",
+        },
+        "has-proj": {
+            "team": "BUF",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 2,
+            "depth_chart_position": "QB",
+            "fantasy_positions": ["QB"],
+            "player_id": "has-proj",
+            "first_name": "Has",
+            "last_name": "Proj",
+        },
+    }
+
+    def fake_get_active_players(self, *, position=None, refresh=False):
+        from app.services.sleeper_client import SleeperClient as SC
+
+        records = []
+        for player_id in ("qb-a", "qb-b"):
+            player = roster[player_id]
+            record = SC.to_player_record(self, player)
+            if record is None:
+                continue
+            if position and record["position"] != position.upper():
+                continue
+            records.append(record)
+        return records
+
+    monkeypatch.setattr(SleeperClient, "get_active_players", fake_get_active_players)
+
+
+@pytest.fixture(autouse=True)
+def mock_sleeper_players(monkeypatch: pytest.MonkeyPatch):
+    _mock_sleeper_roster(monkeypatch)
 
 
 @pytest.fixture
