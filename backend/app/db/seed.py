@@ -9,7 +9,11 @@ from sqlalchemy.orm import Session
 
 from app.db.session import SessionLocal, init_db
 from app.db.tables import Player, TeamMatchupStats
-from app.services.base_projections import fetch_season_averages, resolve_base_projection
+from app.services.base_projections import (
+    fetch_season_averages,
+    load_defense_ranks_by_team,
+    resolve_base_projection,
+)
 from app.services.sleeper_client import SleeperClient
 
 FIXTURES_DIR = Path(__file__).resolve().parent.parent / "fixtures"
@@ -70,6 +74,7 @@ def seed_players(
         if stats_season is not None
         else None
     )
+    defense_ranks_by_team = load_defense_ranks_by_team(DEFENSE_RANKS_PATH)
 
     players_by_id = client.get_all_players(refresh=refresh)
 
@@ -81,6 +86,7 @@ def seed_players(
             position=row["position"],
             season_averages=season_averages,
             sleeper_player=sleeper_player,
+            defense_ranks_by_team=defense_ranks_by_team,
         )
 
         existing = session.execute(
