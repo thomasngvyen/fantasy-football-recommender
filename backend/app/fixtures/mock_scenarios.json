@@ -956,7 +956,7 @@
 {
     "name": "defense_home_vs_elite_total_offense",  
     "base": 20.0,
-    "position": "D",
+    "position": "DST",
     "is_home": true,
     "total_offense_rank": 1,
     "wind_mph": 0,
@@ -966,7 +966,7 @@
 {
     "name": "defense_away_vs_elite_total_offense",
     "base": 20.0,
-    "position": "D",
+    "position": "DST",
     "is_home": false,
     "total_offense_rank": 1,
     "wind_mph": 0,
@@ -976,7 +976,7 @@
 {
     "name": "defense_home_vs_average_total_offense",
     "base": 20.0,
-    "position": "D",
+    "position": "DST",
     "is_home": true,
     "total_offense_rank": 16,
     "wind_mph": 0,
@@ -986,7 +986,7 @@
 {
     "name": "defense_away_vs_average_total_offense",
     "base": 20.0,
-    "position": "D",
+    "position": "DST",
     "is_home": false,
     "total_offense_rank": 16,
     "wind_mph": 0,
@@ -996,7 +996,7 @@
 {
     "name": "defense_home_vs_weak_total_offense",
     "base": 20.0,
-    "position": "D",
+    "position": "DST",
     "is_home": true,
     "total_offense_rank": 32,
     "wind_mph": 0,
@@ -1006,7 +1006,7 @@
 {
     "name": "defense_away_vs_weak_total_offense",
     "base": 20.0,
-    "position": "D",
+    "position": "DST",
     "is_home": false,
     "total_offense_rank": 32,
     "wind_mph": 0,

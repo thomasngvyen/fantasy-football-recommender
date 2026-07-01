@@ -1,188 +1,194 @@
 [
-    {
-      "team": "ARI",
-      "opponent": "NYJ",
-      "is_home": true,
-      "game_datetime": "2026-12-17T00:15:00Z"
-    },
-    {
-      "team": "ATL",
-      "opponent": "WAS",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "BAL",
-      "opponent": "PIT",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "BUF",
-      "opponent": "CHI",
-      "is_home": true,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "CAR",
-      "opponent": "CIN",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "CHI",
-      "opponent": "BUF",
-      "is_home": false,
-      "game_datetime": "2026-12-21T00:15:00Z"
-    },
-    {
-      "team": "CIN",
-      "opponent": "CAR",
-      "is_home": false,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "CLE",
-      "opponent": "NYG",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "DAL",
-      "opponent": "LAR",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "DEN",
-      "opponent": "LV",
-      "is_home": false,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "DET",
-      "opponent": "MIN",
-      "is_home": false,
-      "game_datetime": "2026-12-21T00:15:00Z"
-    },
-    {
-      "team": "GB",
-      "opponent": "MIA",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "HOU",
-      "opponent": "JAX",
-      "is_home": true,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "IND",
-      "opponent": "TEN",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "JAX",
-      "opponent": "HOU",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "KC",
-      "opponent": "NE",
-      "is_home": true,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "LAC",
-      "opponent": "SF",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "LAR",
-      "opponent": "DAL",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "MIA",
-      "opponent": "GB",
-      "is_home": false,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "MIN",
-      "opponent": "DET",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "NE",
-      "opponent": "KC",
-      "is_home": false,
-      "game_datetime": "2026-12-21T00:15:00Z"
-    },
-    {
-      "team": "NO",
-      "opponent": "ARI",
-      "is_home": true,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "NYG",
-      "opponent": "CLE",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "NYJ",
-      "opponent": "ARI",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "PHI",
-      "opponent": "SF",
-      "is_home": false,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "PIT",
-      "opponent": "BAL",
-      "is_home": true,
-      "game_datetime": "2026-12-21T00:15:00Z"
-    },
-    {
-      "team": "SF",
-      "opponent": "PHI",
-      "is_home": true,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "SEA",
-      "opponent": "LAR",
-      "is_home": false,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    },
-    {
-      "team": "TB",
-      "opponent": "NO",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "TEN",
-      "opponent": "IND",
-      "is_home": false,
-      "game_datetime": "2026-12-20T17:00:00Z"
-    },
-    {
-      "team": "WAS",
-      "opponent": "ATL",
-      "is_home": true,
-      "game_datetime": "2026-12-20T20:25:00Z"
-    }
-  ]
+  {
+    "team": "SF",
+    "opponent": "LAC",
+    "is_home": false,
+    "game_datetime": "2026-12-18T01:15:00Z"
+  },
+  {
+    "team": "LAC",
+    "opponent": "SF",
+    "is_home": true,
+    "game_datetime": "2026-12-18T01:15:00Z"
+  },
+  {
+    "team": "SEA",
+    "opponent": "PHI",
+    "is_home": false,
+    "game_datetime": "2026-12-19T22:00:00Z"
+  },
+  {
+    "team": "PHI",
+    "opponent": "SEA",
+    "is_home": true,
+    "game_datetime": "2026-12-19T22:00:00Z"
+  },
+  {
+    "team": "CHI",
+    "opponent": "BUF",
+    "is_home": false,
+    "game_datetime": "2026-12-20T01:20:00Z"
+  },
+  {
+    "team": "BUF",
+    "opponent": "CHI",
+    "is_home": true,
+    "game_datetime": "2026-12-20T01:20:00Z"
+  },
+  {
+    "team": "CIN",
+    "opponent": "CAR",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "CAR",
+    "opponent": "CIN",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "MIA",
+    "opponent": "GB",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "GB",
+    "opponent": "MIA",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "JAX",
+    "opponent": "HOU",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "HOU",
+    "opponent": "JAX",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "CLE",
+    "opponent": "NYG",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "NYG",
+    "opponent": "CLE",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "BAL",
+    "opponent": "PIT",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "PIT",
+    "opponent": "BAL",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "NO",
+    "opponent": "TB",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "TB",
+    "opponent": "NO",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "IND",
+    "opponent": "TEN",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "TEN",
+    "opponent": "IND",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "ATL",
+    "opponent": "WAS",
+    "is_home": false,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "WAS",
+    "opponent": "ATL",
+    "is_home": true,
+    "game_datetime": "2026-12-20T18:00:00Z"
+  },
+  {
+    "team": "NYJ",
+    "opponent": "ARI",
+    "is_home": false,
+    "game_datetime": "2026-12-20T21:05:00Z"
+  },
+  {
+    "team": "ARI",
+    "opponent": "NYJ",
+    "is_home": true,
+    "game_datetime": "2026-12-20T21:05:00Z"
+  },
+  {
+    "team": "DAL",
+    "opponent": "LAR",
+    "is_home": false,
+    "game_datetime": "2026-12-20T21:25:00Z"
+  },
+  {
+    "team": "LAR",
+    "opponent": "DAL",
+    "is_home": true,
+    "game_datetime": "2026-12-20T21:25:00Z"
+  },
+  {
+    "team": "DEN",
+    "opponent": "LV",
+    "is_home": false,
+    "game_datetime": "2026-12-20T21:25:00Z"
+  },
+  {
+    "team": "LV",
+    "opponent": "DEN",
+    "is_home": true,
+    "game_datetime": "2026-12-20T21:25:00Z"
+  },
+  {
+    "team": "DET",
+    "opponent": "MIN",
+    "is_home": false,
+    "game_datetime": "2026-12-21T01:20:00Z"
+  },
+  {
+    "team": "MIN",
+    "opponent": "DET",
+    "is_home": true,
+    "game_datetime": "2026-12-21T01:20:00Z"
+  },
+  {
+    "team": "NE",
+    "opponent": "KC",
+    "is_home": false,
+    "game_datetime": "2026-12-22T01:15:00Z"
+  },
+  {
+    "team": "KC",
+    "opponent": "NE",
+    "is_home": true,
+    "game_datetime": "2026-12-22T01:15:00Z"
+  }
+]
