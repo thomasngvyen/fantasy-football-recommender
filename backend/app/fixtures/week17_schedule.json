@@ -1,0 +1,194 @@
+[
+  {
+    "team": "BAL",
+    "opponent": "CIN",
+    "is_home": false,
+    "game_datetime": "2027-01-01T01:15:00Z"
+  },
+  {
+    "team": "CIN",
+    "opponent": "BAL",
+    "is_home": true,
+    "game_datetime": "2027-01-01T01:15:00Z"
+  },
+  {
+    "team": "WAS",
+    "opponent": "JAX",
+    "is_home": false,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "JAX",
+    "opponent": "WAS",
+    "is_home": true,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "KC",
+    "opponent": "LAC",
+    "is_home": false,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "LAC",
+    "opponent": "KC",
+    "is_home": true,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "DEN",
+    "opponent": "NE",
+    "is_home": false,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "NE",
+    "opponent": "DEN",
+    "is_home": true,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "LAR",
+    "opponent": "TB",
+    "is_home": false,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "TB",
+    "opponent": "LAR",
+    "is_home": true,
+    "game_datetime": "2027-01-03T05:00:00Z"
+  },
+  {
+    "team": "NO",
+    "opponent": "ATL",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "ATL",
+    "opponent": "NO",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "SEA",
+    "opponent": "CAR",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "CAR",
+    "opponent": "SEA",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "IND",
+    "opponent": "CLE",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "CLE",
+    "opponent": "IND",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "NYG",
+    "opponent": "DAL",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "DAL",
+    "opponent": "NYG",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "BUF",
+    "opponent": "MIA",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "MIA",
+    "opponent": "BUF",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "MIN",
+    "opponent": "NYJ",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "NYJ",
+    "opponent": "MIN",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "PIT",
+    "opponent": "TEN",
+    "is_home": false,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "TEN",
+    "opponent": "PIT",
+    "is_home": true,
+    "game_datetime": "2027-01-03T18:00:00Z"
+  },
+  {
+    "team": "LV",
+    "opponent": "ARI",
+    "is_home": false,
+    "game_datetime": "2027-01-03T21:05:00Z"
+  },
+  {
+    "team": "ARI",
+    "opponent": "LV",
+    "is_home": true,
+    "game_datetime": "2027-01-03T21:05:00Z"
+  },
+  {
+    "team": "DET",
+    "opponent": "CHI",
+    "is_home": false,
+    "game_datetime": "2027-01-03T21:25:00Z"
+  },
+  {
+    "team": "CHI",
+    "opponent": "DET",
+    "is_home": true,
+    "game_datetime": "2027-01-03T21:25:00Z"
+  },
+  {
+    "team": "PHI",
+    "opponent": "SF",
+    "is_home": false,
+    "game_datetime": "2027-01-04T01:20:00Z"
+  },
+  {
+    "team": "SF",
+    "opponent": "PHI",
+    "is_home": true,
+    "game_datetime": "2027-01-04T01:20:00Z"
+  },
+  {
+    "team": "HOU",
+    "opponent": "GB",
+    "is_home": false,
+    "game_datetime": "2027-01-05T01:15:00Z"
+  },
+  {
+    "team": "GB",
+    "opponent": "HOU",
+    "is_home": true,
+    "game_datetime": "2027-01-05T01:15:00Z"
+  }
+]
