@@ -1,5 +1,5 @@
 import type { CompareResponse } from '../api/types'
-import { BREAKDOWN_ROWS, formatBreakdownValue } from '../utils/format'
+import { breakdownRowsForPosition, formatBreakdownValue } from '../utils/format'
 
 type PlayerCardProps = {
   label: string
@@ -31,7 +31,7 @@ export function PlayerCard({
 
       <table className="breakdown-table">
         <tbody>
-          {BREAKDOWN_ROWS.map(({ key, label: rowLabel }) => (
+          {breakdownRowsForPosition(player.position).map(({ key, label: rowLabel }) => (
             <tr key={key}>
               <th>{rowLabel}</th>
               <td>{formatBreakdownValue(key, player.breakdown[key])}</td>

@@ -100,7 +100,16 @@ def _mock_sleeper_roster(monkeypatch: pytest.MonkeyPatch) -> None:
             records.append(record)
         return records
 
+    def fake_get_player_record(self, player_id: str, *, refresh=False):
+        from app.services.sleeper_client import SleeperClient as SC
+
+        player = roster.get(player_id)
+        if player is None:
+            return None
+        return SC.to_player_record(self, player)
+
     monkeypatch.setattr(SleeperClient, "get_active_players", fake_get_active_players)
+    monkeypatch.setattr(SleeperClient, "get_player_record", fake_get_player_record)
 
 
 @pytest.fixture(autouse=True)
@@ -313,3 +322,39 @@ def test_post_compare_missing_projection(db_session: Session, client: TestClient
         },
     )
     assert response.status_code == 404
+
+
+def test_post_compare_rejects_non_rosterable_player(
+    seeded_client: TestClient, monkeypatch: pytest.MonkeyPatch
+):
+    def fake_get_player_record(self, player_id: str, *, refresh=False):
+        if player_id == "qb-b":
+            return None
+        from app.services.sleeper_client import SleeperClient as SC
+
+        player = {
+            "team": "KC",
+            "status": "Active",
+            "active": True,
+            "depth_chart_order": 1,
+            "depth_chart_position": "QB",
+            "fantasy_positions": ["QB"],
+            "player_id": player_id,
+            "first_name": "Alpha",
+            "last_name": "QB",
+        }
+        return SC.to_player_record(self, player)
+
+    monkeypatch.setattr(SleeperClient, "get_player_record", fake_get_player_record)
+
+    response = seeded_client.post(
+        "/compare",
+        json={
+            "player_a_id": "qb-a",
+            "player_b_id": "qb-b",
+            "week": 1,
+            "season": 2026,
+        },
+    )
+    assert response.status_code == 400
+    assert "not currently rosterable" in response.json()["detail"]

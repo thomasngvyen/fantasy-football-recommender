@@ -56,7 +56,13 @@ python -m pip install -r requirements.txt
 
 **3. Configure environment variables**
 
-Create `backend/.env` (this file is gitignored — never commit secrets):
+Copy the example file and edit as needed:
+
+```bash
+cp .env.example .env
+```
+
+Or create `backend/.env` manually (this file is gitignored — never commit secrets):
 
 ```env
 # Required for defaults; "live" uses Sleeper + fixture data
@@ -93,15 +99,19 @@ python scripts/sync_week.py --week 1 --season 2026 --stats-season 2025
 **Sync all weeks (1–17)**
 
 ```bash
-python scripts/sync_week.py --week 1 --season 2026 --stats-season 2025 --no-weather
+python scripts/sync_week.py --all-weeks --season 2026 --stats-season 2025 --no-weather
+```
 
+This seeds players and defense stats on week 1, then rebuilds matchups and projections for every week. Omit `--no-weather` to fetch forecasts when games fall inside OpenWeather’s 5-day window.
+
+Manual loop (PowerShell):
+
+```powershell
 1..17 | ForEach-Object {
   python scripts/sync_week.py --week $_ --season 2026 --matchups-only
   python scripts/sync_week.py --week $_ --season 2026 --projections-only
 }
 ```
-
-*(Use a `for` loop on macOS/Linux instead of PowerShell's `1..17 | ForEach-Object`.)*
 
 ### Run the development servers
 
@@ -133,13 +143,30 @@ The Vite dev server proxies `/health`, `/players`, and `/compare` to the backend
 ```bash
 cd backend
 python -m pytest -v
+
+cd ../frontend
+npm test
+npm run build
 ```
+
+### Docker Compose
+
+```bash
+docker compose up --build
+```
+
+- API: http://localhost:8000  
+- Frontend: http://localhost:8080  
+
+Run a sync inside the backend container before comparing players in Docker.
 
 ### Useful sync flags
 
 | Flag | Purpose |
 |------|---------|
 | `--week N` | Target NFL week |
+| `--all-weeks` | Sync a range of weeks (default 1–17) |
+| `--weeks-start` / `--weeks-end` | Range for `--all-weeks` |
 | `--season YYYY` | Target season |
 | `--stats-season YYYY` | Season for Sleeper per-game averages (e.g. prior year) |
 | `--matchups-only` | Rebuild matchups only |
@@ -198,6 +225,8 @@ fantasy_football_recommender/
 |--------|------|-------------|
 | `GET` | `/health` | Health check |
 | `GET` | `/players?position=QB` | List rosterable players (live from Sleeper) |
+| `GET` | `/schedule/weeks` | List schedule metadata (bye weeks, game counts) |
+| `GET` | `/schedule/weeks/{week}` | Schedule info for one week |
 | `POST` | `/compare` | Compare two players for a given week/season |
 
 Example compare request:

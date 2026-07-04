@@ -3,6 +3,7 @@ import type {
   CompareResponse,
   PlayerOut,
   Position,
+  WeekScheduleOut,
 } from './types'
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? ''
@@ -47,6 +48,19 @@ export async function comparePlayers(
     method: 'POST',
     body: JSON.stringify(payload),
   })
+}
+
+export async function getScheduleWeek(week: number): Promise<WeekScheduleOut> {
+  return request<WeekScheduleOut>(`/schedule/weeks/${week}`)
+}
+
+export async function getScheduleWeeks(
+  start = 1,
+  end = 17,
+): Promise<WeekScheduleOut[]> {
+  return request<WeekScheduleOut[]>(
+    `/schedule/weeks?start=${start}&end=${end}`,
+  )
 }
 
 export async function checkHealth(): Promise<boolean> {

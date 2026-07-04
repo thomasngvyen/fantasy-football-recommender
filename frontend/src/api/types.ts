@@ -35,6 +35,14 @@ export interface CompareResponse {
   recommendation: string
 }
 
+export interface WeekScheduleOut {
+  week: number
+  game_count: number
+  teams_playing: number
+  teams_on_bye: string[]
+  has_schedule: boolean
+}
+
 export interface PlayerOut {
   sleeper_id: string
   name: string

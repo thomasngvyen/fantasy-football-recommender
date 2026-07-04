@@ -15,6 +15,19 @@ from app.models import (
 from app.services.sleeper_client import SleeperClient
 
 
+def _ensure_player_rosterable(player: Player, client: SleeperClient) -> None:
+    """Reject compare requests for players no longer on an active NFL roster slot."""
+    record = client.get_player_record(player.sleeper_id, refresh=False)
+    if record is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=(
+                f"{player.name} is not currently rosterable "
+                "(inactive, free agent, or depth backup)."
+            ),
+        )
+
+
 def get_player_by_sleeper_id(db: Session, sleeper_id: str) -> Player:
     player = db.execute(
         select(Player).where(Player.sleeper_id == sleeper_id)
@@ -117,9 +130,18 @@ def _to_compare_player_result(
     )
 
 
-def compare_players(db: Session, request: CompareRequest) -> CompareResponse:
+def compare_players(
+    db: Session,
+    request: CompareRequest,
+    *,
+    sleeper: SleeperClient | None = None,
+) -> CompareResponse:
+    client = sleeper or SleeperClient()
     player_a = get_player_by_sleeper_id(db, request.player_a_id)
     player_b = get_player_by_sleeper_id(db, request.player_b_id)
+
+    _ensure_player_rosterable(player_a, client)
+    _ensure_player_rosterable(player_b, client)
 
     if player_a.position != player_b.position:
         raise HTTPException(

@@ -2,14 +2,15 @@ from __future__ import annotations
 
 from typing import Annotated
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.db.session import get_db
-from app.models import CompareRequest, CompareResponse, PlayerOut
+from app.models import CompareRequest, CompareResponse, PlayerOut, WeekScheduleOut
 from app.services.compare import compare_players, list_players
+from app.services.schedule import list_week_schedules, week_schedule_info
 
 app = FastAPI(
     title="Fantasy Football Recommender",
@@ -50,6 +51,22 @@ def get_players(
     position: str | None = None,
 ) -> list[PlayerOut]:
     return list_players(db, position=position)
+
+
+@app.get("/schedule/weeks", response_model=list[WeekScheduleOut])
+def get_schedule_weeks(
+    start: int = 1,
+    end: int = 17,
+) -> list[WeekScheduleOut]:
+    return list_week_schedules(start=start, end=end)
+
+
+@app.get("/schedule/weeks/{week}", response_model=WeekScheduleOut)
+def get_schedule_week(week: int) -> WeekScheduleOut:
+    info = week_schedule_info(week)
+    if info is None:
+        raise HTTPException(status_code=404, detail=f"No schedule fixture for week {week}")
+    return info
 
 
 @app.post("/compare", response_model=CompareResponse)

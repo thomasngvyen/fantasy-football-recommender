@@ -22,7 +22,7 @@ DEFAULT_BASE_BY_POSITION: dict[str, float] = {
     "D": 8.0,
 }
 
-BACKUP_QB_BASE = 0.0
+BACKUP_QB_BASE = 6.0
 DST_RANK_SPREAD = 3.0
 DEFENSE_POSITIONS = frozenset({"DST", "D"})
 
@@ -137,8 +137,8 @@ def resolve_base_projection(
     DST units use defense_ranks.json because Sleeper season stats are keyed by
     numeric player IDs, not team abbreviations like "KC" or "JAX".
 
-    If season averages were loaded but a skill player has no recorded games,
-    return 0.0 instead of a generic starter baseline.
+    If season averages were loaded but a player has no recorded games, fall back
+    to the position default (e.g. kickers without prior-season stats).
     """
     if is_depth_chart_backup(sleeper_player, position):
         return BACKUP_QB_BASE
@@ -150,5 +150,7 @@ def resolve_base_projection(
         return DEFAULT_BASE_BY_POSITION.get(position, 0.0)
 
     if season_averages is not None:
-        return season_averages.get(sleeper_id, 0.0)
+        if sleeper_id in season_averages:
+            return season_averages[sleeper_id]
+        return DEFAULT_BASE_BY_POSITION.get(position, 0.0)
     return DEFAULT_BASE_BY_POSITION.get(position, 0.0)

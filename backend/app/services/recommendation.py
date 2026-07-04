@@ -53,7 +53,7 @@ def recommend_for_matchup(
     is_rain = weather.is_rain if weather else False
 
     base = effective_base_projection(player)
-    return compute_adjusted_projection(
+    adjusted_points, breakdown = compute_adjusted_projection(
         base=base,
         position=player.position,
         is_home=matchup.is_home,
@@ -64,6 +64,13 @@ def recommend_for_matchup(
         is_dome=matchup.is_dome,
         rain=is_rain,
     )
+
+    if not matchup.is_dome and weather is None and "weather_notes" not in breakdown:
+        breakdown["weather_notes"] = (
+            "Forecast not yet available — check closer to kickoff"
+        )
+
+    return adjusted_points, breakdown
 
 
 def upsert_projection(

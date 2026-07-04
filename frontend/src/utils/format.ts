@@ -22,6 +22,18 @@ export function formatBreakdownValue(
   return `${value >= 0 ? '+' : ''}${value.toFixed(2)}`
 }
 
+export function breakdownRowsForPosition(position: string) {
+  return BREAKDOWN_ROWS.filter(({ key }) => {
+    if (key === 'defense_rank_modifier') {
+      return position !== 'DST'
+    }
+    if (key === 'total_offense_rank_modifier') {
+      return position === 'DST'
+    }
+    return true
+  })
+}
+
 export function formatPlayerLabel(player: PlayerOut): string {
   const team = player.team ? ` (${player.team})` : ''
   return `${player.name}${team}`

@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from app.db.tables import Base, Matchup, Player, Projection
 from app.models import CompareRequest
 from app.services.compare import compare_players
+from tests.fake_sleeper import AlwaysRosterableSleeper
 
 
 @pytest.fixture
@@ -112,6 +113,7 @@ def test_compare_players_picks_higher_projection(db_session: Session):
             week=1,
             season=2026,
         ),
+        sleeper=AlwaysRosterableSleeper(),
     )
 
     assert response.winner.sleeper_id == "qb-a"
@@ -148,6 +150,7 @@ def test_compare_players_rejects_position_mismatch(db_session: Session):
                 week=1,
                 season=2026,
             ),
+            sleeper=AlwaysRosterableSleeper(),
         )
 
     assert exc.value.status_code == 400
@@ -219,6 +222,7 @@ def test_compare_players_missing_projection(db_session: Session):
                 week=1,
                 season=2026,
             ),
+            sleeper=AlwaysRosterableSleeper(),
         )
 
     assert exc.value.status_code == 404

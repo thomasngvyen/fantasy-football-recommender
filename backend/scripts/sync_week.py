@@ -4,6 +4,7 @@ Weekly sync: NFL state from Sleeper → seed DB → build matchups.
 Run from the backend directory:
     python scripts/sync_week.py
     python scripts/sync_week.py --week 1 --season 2026
+    python scripts/sync_week.py --all-weeks --season 2026 --stats-season 2025 --no-weather
     python scripts/sync_week.py --matchups-only
 """
 
@@ -226,6 +227,23 @@ def main() -> None:
         default="half_ppr",
         help="Fantasy scoring format for season averages",
     )
+    parser.add_argument(
+        "--all-weeks",
+        action="store_true",
+        help="Sync weeks 1–17 (or --weeks-start/--weeks-end range)",
+    )
+    parser.add_argument(
+        "--weeks-start",
+        type=int,
+        default=1,
+        help="First week when using --all-weeks (default: 1)",
+    )
+    parser.add_argument(
+        "--weeks-end",
+        type=int,
+        default=17,
+        help="Last week when using --all-weeks (default: 17)",
+    )
     args = parser.parse_args()
 
     exclusive = sum(
@@ -242,6 +260,50 @@ def main() -> None:
             "Use at most one of --stats-only, --players-only, "
             "--matchups-only, --weather-only, --projections-only"
         )
+
+    if args.all_weeks:
+        if args.week is not None:
+            parser.error("Use either --week or --all-weeks, not both")
+        if args.weeks_start < 1 or args.weeks_end < args.weeks_start:
+            parser.error("--weeks-start must be >= 1 and <= --weeks-end")
+
+        weeks = range(args.weeks_start, args.weeks_end + 1)
+        for index, target_week in enumerate(weeks):
+            first_week = index == 0
+            run_sync(
+                week=target_week,
+                season=args.season,
+                stats=first_week
+                and not args.players_only
+                and not args.matchups_only
+                and not args.weather_only
+                and not args.projections_only,
+                players=first_week
+                and not args.stats_only
+                and not args.matchups_only
+                and not args.weather_only
+                and not args.projections_only,
+                matchups=not args.stats_only
+                and not args.players_only
+                and not args.weather_only
+                and not args.projections_only,
+                weather=not args.no_weather
+                and not args.stats_only
+                and not args.players_only
+                and not args.matchups_only
+                and not args.projections_only,
+                projections=not args.no_projections
+                and not args.stats_only
+                and not args.players_only
+                and not args.matchups_only
+                and not args.weather_only,
+                refresh_players=not args.no_refresh_players,
+                stats_season=args.stats_season,
+                scoring=args.scoring,
+                use_season_averages=not args.no_season_averages,
+            )
+            print()
+        return
 
     run_sync(
         week=args.week,

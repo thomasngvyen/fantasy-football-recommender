@@ -44,3 +44,11 @@ class PlayerOut(BaseModel):
     name: str = Field(..., description="Player name")
     position: str = Field(..., description="Player position")
     team: str | None = Field(None, description="Player team")
+
+
+class WeekScheduleOut(BaseModel):
+    week: int
+    game_count: int
+    teams_playing: int
+    teams_on_bye: list[str]
+    has_schedule: bool = True

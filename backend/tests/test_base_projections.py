@@ -109,6 +109,16 @@ def test_resolve_base_projection_dst_without_ranks_uses_default():
     assert base == DEFAULT_BASE_BY_POSITION["DST"]
 
 
+def test_resolve_base_projection_uses_position_default_when_no_season_stats():
+    base = resolve_base_projection(
+        sleeper_id="kicker-1",
+        position="K",
+        season_averages={"4881": 21.16},
+        sleeper_player={"team": "KC"},
+    )
+    assert base == DEFAULT_BASE_BY_POSITION["K"]
+
+
 def test_dst_base_from_defense_ranks_elite_beats_weak():
     defense_ranks = load_defense_ranks_by_team()
     elite = dst_base_from_defense_ranks(defense_ranks["HOU"])

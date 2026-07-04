@@ -163,6 +163,43 @@
   letter-spacing: 0.02em;
 }
 
+.field__hint {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.form-status {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.form-status--loading {
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.form-status--empty {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--border-subtle);
+}
+
+.loading-panel {
+  padding: 28px;
+  text-align: center;
+}
+
+.loading-panel__text {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
 .field__control {
   font: inherit;
   color: var(--text-h);

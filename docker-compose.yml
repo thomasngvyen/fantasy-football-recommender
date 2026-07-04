@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATA_MODE: live
+      DATABASE_URL: sqlite:///./fantasy.db
+      CORS_ORIGINS: http://localhost:5173,http://localhost
+    volumes:
+      - backend-data:/app/fantasy.db
+    working_dir: /app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend-data:

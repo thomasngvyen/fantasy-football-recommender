@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import { checkHealth, comparePlayers, getPlayers } from './api/client'
-import type { CompareResponse, Position } from './api/types'
+import { checkHealth, comparePlayers, getPlayers, getScheduleWeek } from './api/client'
+import type { CompareResponse, Position, WeekScheduleOut } from './api/types'
 import { CompareForm } from './components/CompareForm'
 import { HeroHeader } from './components/HeroHeader'
 import { ResultsSection } from './components/ResultsSection'
@@ -10,6 +10,7 @@ function App() {
   const [position, setPosition] = useState<Position>('QB')
   const [week, setWeek] = useState(1)
   const [season, setSeason] = useState(2026)
+  const [weekInfo, setWeekInfo] = useState<WeekScheduleOut | null>(null)
   const [players, setPlayers] = useState<Awaited<ReturnType<typeof getPlayers>>>([])
   const [playerAId, setPlayerAId] = useState('')
   const [playerBId, setPlayerBId] = useState('')
@@ -50,6 +51,12 @@ function App() {
     void loadPlayers(position)
   }, [position, loadPlayers])
 
+  useEffect(() => {
+    void getScheduleWeek(week)
+      .then(setWeekInfo)
+      .catch(() => setWeekInfo(null))
+  }, [week])
+
   async function handleCompare(event: React.FormEvent) {
     event.preventDefault()
     if (!playerAId || !playerBId || playerAId === playerBId) return
@@ -86,6 +93,7 @@ function App() {
         position={position}
         week={week}
         season={season}
+        weekInfo={weekInfo}
         players={players}
         playerAId={playerAId}
         playerBId={playerBId}
@@ -113,7 +121,13 @@ function App() {
         </p>
       ) : null}
 
-      {result ? <ResultsSection result={result} /> : null}
+      {comparing ? (
+        <section className="panel loading-panel animate-in animate-in--3" aria-live="polite">
+          <p className="loading-panel__text">Running projection compare…</p>
+        </section>
+      ) : null}
+
+      {result && !comparing ? <ResultsSection result={result} /> : null}
     </div>
   )
 }

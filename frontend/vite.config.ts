@@ -9,6 +9,7 @@ export default defineConfig({
       '/health': 'http://127.0.0.1:8000',
       '/players': 'http://127.0.0.1:8000',
       '/compare': 'http://127.0.0.1:8000',
+      '/schedule': 'http://127.0.0.1:8000',
     },
   },
 })
