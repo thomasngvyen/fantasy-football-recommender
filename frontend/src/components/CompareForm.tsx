@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import type { PlayerOut, Position, WeekScheduleOut } from '../api/types'
 import { POSITIONS } from '../api/types'
-import { formatPlayerLabel } from '../utils/format'
+import { filterPlayers, formatPlayerLabel } from '../utils/format'
 
 type CompareFormProps = {
   position: Position
@@ -21,6 +21,70 @@ type CompareFormProps = {
   onPlayerAChange: (id: string) => void
   onPlayerBChange: (id: string) => void
   onSubmit: (event: FormEvent) => void
+}
+
+type PlayerPickerProps = {
+  label: string
+  players: PlayerOut[]
+  selectedId: string
+  excludeId: string
+  filter: string
+  disabled: boolean
+  onChange: (id: string) => void
+}
+
+function PlayerPicker({
+  label,
+  players,
+  selectedId,
+  excludeId,
+  filter,
+  disabled,
+  onChange,
+}: PlayerPickerProps) {
+  const selected = players.find((player) => player.sleeper_id === selectedId)
+  const options = useMemo(
+    () => filterPlayers(players, filter, excludeId),
+    [players, filter, excludeId],
+  )
+
+  if (selected) {
+    return (
+      <div className="field__chosen">
+        <span className="field__chosen-name">{formatPlayerLabel(selected)}</span>
+        <button
+          type="button"
+          className="field__change"
+          onClick={() => onChange('')}
+          disabled={disabled}
+        >
+          Change
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <select
+      className="field__control"
+      value=""
+      onChange={(e) => {
+        if (e.target.value) {
+          onChange(e.target.value)
+        }
+      }}
+      disabled={disabled || options.length === 0}
+    >
+      <option value="" disabled>
+        {options.length === 0 ? 'No matches — adjust search' : `Choose ${label}`}
+      </option>
+      {options.map((player) => (
+        <option key={player.sleeper_id} value={player.sleeper_id}>
+          {formatPlayerLabel(player)}
+        </option>
+      ))}
+    </select>
+  )
 }
 
 export function CompareForm({
@@ -43,13 +107,14 @@ export function CompareForm({
 }: CompareFormProps) {
   const [playerFilter, setPlayerFilter] = useState('')
 
-  const filteredPlayers = useMemo(() => {
-    const query = playerFilter.trim().toLowerCase()
-    if (!query) return players
-    return players.filter((player) =>
-      formatPlayerLabel(player).toLowerCase().includes(query),
-    )
-  }, [playerFilter, players])
+  const filteredCount = useMemo(
+    () =>
+      filterPlayers(players, playerFilter, '').filter(
+        (player) =>
+          player.sleeper_id !== playerAId && player.sleeper_id !== playerBId,
+      ).length,
+    [players, playerFilter, playerAId, playerBId],
+  )
 
   return (
     <form className="compare-form panel animate-in animate-in--2" onSubmit={onSubmit}>
@@ -111,7 +176,40 @@ export function CompareForm({
           onChange={(e) => setPlayerFilter(e.target.value)}
           disabled={loadingPlayers || players.length === 0}
         />
+        {playerFilter.trim() ? (
+          <span className="field__hint">
+            {filteredCount} player{filteredCount === 1 ? '' : 's'} match
+          </span>
+        ) : null}
       </label>
+
+      <div className="form-grid form-grid--players">
+        <label className="field">
+          <span className="field__label">Player A</span>
+          <PlayerPicker
+            label="player A"
+            players={players}
+            selectedId={playerAId}
+            excludeId={playerBId}
+            filter={playerFilter}
+            disabled={loadingPlayers}
+            onChange={onPlayerAChange}
+          />
+        </label>
+
+        <label className="field">
+          <span className="field__label">Player B</span>
+          <PlayerPicker
+            label="player B"
+            players={players}
+            selectedId={playerBId}
+            excludeId={playerAId}
+            filter={playerFilter}
+            disabled={loadingPlayers}
+            onChange={onPlayerBChange}
+          />
+        </label>
+      </div>
 
       {loadingPlayers ? (
         <p className="form-status form-status--loading" aria-live="polite">
@@ -126,45 +224,16 @@ export function CompareForm({
         </p>
       ) : null}
 
-      {!loadingPlayers && players.length > 0 && filteredPlayers.length === 0 ? (
+      {!loadingPlayers &&
+      players.length > 0 &&
+      playerFilter.trim() &&
+      filteredCount === 0 &&
+      !playerAId &&
+      !playerBId ? (
         <p className="form-status form-status--empty" role="status">
           No players match &ldquo;{playerFilter}&rdquo;.
         </p>
       ) : null}
-
-      <div className="form-grid form-grid--players">
-        <label className="field">
-          <span className="field__label">Player A</span>
-          <select
-            className="field__control"
-            value={playerAId}
-            onChange={(e) => onPlayerAChange(e.target.value)}
-            disabled={loadingPlayers || filteredPlayers.length === 0}
-          >
-            {filteredPlayers.map((player) => (
-              <option key={player.sleeper_id} value={player.sleeper_id}>
-                {formatPlayerLabel(player)}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="field">
-          <span className="field__label">Player B</span>
-          <select
-            className="field__control"
-            value={playerBId}
-            onChange={(e) => onPlayerBChange(e.target.value)}
-            disabled={loadingPlayers || filteredPlayers.length === 0}
-          >
-            {filteredPlayers.map((player) => (
-              <option key={player.sleeper_id} value={player.sleeper_id}>
-                {formatPlayerLabel(player)}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
 
       <button type="submit" className="btn-primary" disabled={!canCompare}>
         <span className="btn-primary__shine" aria-hidden />

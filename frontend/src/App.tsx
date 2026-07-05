@@ -27,12 +27,11 @@ function App() {
       const data = await getPlayers(pos)
       setPlayers(data)
       setPlayerAId((current) =>
-        data.some((p) => p.sleeper_id === current) ? current : (data[0]?.sleeper_id ?? ''),
+        current && data.some((p) => p.sleeper_id === current) ? current : '',
       )
-      setPlayerBId((current) => {
-        if (data.some((p) => p.sleeper_id === current)) return current
-        return data[1]?.sleeper_id ?? data[0]?.sleeper_id ?? ''
-      })
+      setPlayerBId((current) =>
+        current && data.some((p) => p.sleeper_id === current) ? current : '',
+      )
     } catch (err) {
       setPlayers([])
       setPlayerAId('')

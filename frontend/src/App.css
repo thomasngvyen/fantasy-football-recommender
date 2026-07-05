@@ -200,6 +200,44 @@
   color: var(--text-muted);
 }
 
+.field__chosen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.field__chosen-name {
+  font-size: 0.9375rem;
+  color: var(--text-h);
+}
+
+.field__change {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--accent-bright);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease-in-out);
+}
+
+.field__change:hover:not(:disabled) {
+  border-color: rgba(59, 130, 246, 0.45);
+}
+
+.field__change:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .field__control {
   font: inherit;
   color: var(--text-h);

@@ -38,3 +38,20 @@ export function formatPlayerLabel(player: PlayerOut): string {
   const team = player.team ? ` (${player.team})` : ''
   return `${player.name}${team}`
 }
+
+export function filterPlayers(
+  players: PlayerOut[],
+  filter: string,
+  excludeId = '',
+): PlayerOut[] {
+  const query = filter.trim().toLowerCase()
+  return players.filter((player) => {
+    if (excludeId && player.sleeper_id === excludeId) {
+      return false
+    }
+    if (!query) {
+      return true
+    }
+    return formatPlayerLabel(player).toLowerCase().includes(query)
+  })
+}
